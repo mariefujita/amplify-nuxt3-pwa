@@ -1,0 +1,22 @@
+type Store @model {
+  id: ID!
+  store_name: String!
+  phone: AWSPhone
+  region_id: Int
+  longitude: String
+  latitude: String
+  status: Int
+  start_time: String
+  end_time: String
+  sort: Int
+  keywords: String
+  logo: String
+  like: Int
+  clicks: Int
+  reviews: Int
+  store_desc: String
+  created_at: AWSTimestamp
+  updated_at: AWSTimestamp
+  is_buy: Int
+  shop_url: AWSURL
+}
