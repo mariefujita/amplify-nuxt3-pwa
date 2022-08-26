@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
-    configPath: 'tailwind.confid.js',
+    configPath: 'tailwind.config.js',
     exposeConfig: false,
     config: {},
     injectPosition: 0,

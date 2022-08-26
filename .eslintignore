@@ -16,3 +16,5 @@ nuxt.config.ts
 tailwind.config.js
 
 amplify/backend/types/
+
+src/models

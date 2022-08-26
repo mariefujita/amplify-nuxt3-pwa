@@ -1,7 +1,7 @@
-type Store @model {
+type Store @model @auth(rules: [{ allow: public }]) {
   id: ID!
   store_name: String!
-  phone: AWSPhone
+  phone: String
   region_id: Int
   longitude: String
   latitude: String
