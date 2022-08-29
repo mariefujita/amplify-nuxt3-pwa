@@ -30,6 +30,9 @@ export const createStore = /* GraphQL */ `
       shop_url
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -61,6 +64,9 @@ export const updateStore = /* GraphQL */ `
       shop_url
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -92,6 +98,9 @@ export const deleteStore = /* GraphQL */ `
       shop_url
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

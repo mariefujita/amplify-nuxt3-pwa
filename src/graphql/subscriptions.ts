@@ -3,8 +3,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateStore = /* GraphQL */ `
-  subscription OnCreateStore($filter: ModelSubscriptionStoreFilterInput) {
-    onCreateStore(filter: $filter) {
+  subscription OnCreateStore {
+    onCreateStore {
       id
       store_name
       phone
@@ -27,12 +27,15 @@ export const onCreateStore = /* GraphQL */ `
       shop_url
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
 export const onUpdateStore = /* GraphQL */ `
-  subscription OnUpdateStore($filter: ModelSubscriptionStoreFilterInput) {
-    onUpdateStore(filter: $filter) {
+  subscription OnUpdateStore {
+    onUpdateStore {
       id
       store_name
       phone
@@ -55,12 +58,15 @@ export const onUpdateStore = /* GraphQL */ `
       shop_url
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
 export const onDeleteStore = /* GraphQL */ `
-  subscription OnDeleteStore($filter: ModelSubscriptionStoreFilterInput) {
-    onDeleteStore(filter: $filter) {
+  subscription OnDeleteStore {
+    onDeleteStore {
       id
       store_name
       phone
@@ -83,6 +89,9 @@ export const onDeleteStore = /* GraphQL */ `
       shop_url
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

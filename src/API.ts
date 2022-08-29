@@ -23,6 +23,7 @@ export type CreateStoreInput = {
   updated_at?: number | null,
   is_buy?: number | null,
   shop_url?: string | null,
+  _version?: number | null,
 };
 
 export type ModelStoreConditionInput = {
@@ -126,6 +127,9 @@ export type Store = {
   shop_url?: string | null,
   createdAt: string,
   updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
 };
 
 export type UpdateStoreInput = {
@@ -149,10 +153,12 @@ export type UpdateStoreInput = {
   updated_at?: number | null,
   is_buy?: number | null,
   shop_url?: string | null,
+  _version?: number | null,
 };
 
 export type DeleteStoreInput = {
   id: string,
+  _version?: number | null,
 };
 
 export type ModelStoreFilterInput = {
@@ -201,73 +207,7 @@ export type ModelStoreConnection = {
   __typename: "ModelStoreConnection",
   items:  Array<Store | null >,
   nextToken?: string | null,
-};
-
-export type ModelSubscriptionStoreFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  store_name?: ModelSubscriptionStringInput | null,
-  phone?: ModelSubscriptionStringInput | null,
-  region_id?: ModelSubscriptionIntInput | null,
-  longitude?: ModelSubscriptionStringInput | null,
-  latitude?: ModelSubscriptionStringInput | null,
-  status?: ModelSubscriptionIntInput | null,
-  start_time?: ModelSubscriptionStringInput | null,
-  end_time?: ModelSubscriptionStringInput | null,
-  sort?: ModelSubscriptionIntInput | null,
-  keywords?: ModelSubscriptionStringInput | null,
-  logo?: ModelSubscriptionStringInput | null,
-  like?: ModelSubscriptionIntInput | null,
-  clicks?: ModelSubscriptionIntInput | null,
-  reviews?: ModelSubscriptionIntInput | null,
-  store_desc?: ModelSubscriptionStringInput | null,
-  created_at?: ModelSubscriptionIntInput | null,
-  updated_at?: ModelSubscriptionIntInput | null,
-  is_buy?: ModelSubscriptionIntInput | null,
-  shop_url?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionStoreFilterInput | null > | null,
-  or?: Array< ModelSubscriptionStoreFilterInput | null > | null,
-};
-
-export type ModelSubscriptionIDInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  in?: Array< string | null > | null,
-  notIn?: Array< string | null > | null,
-};
-
-export type ModelSubscriptionStringInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  in?: Array< string | null > | null,
-  notIn?: Array< string | null > | null,
-};
-
-export type ModelSubscriptionIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  in?: Array< number | null > | null,
-  notIn?: Array< number | null > | null,
+  startedAt?: number | null,
 };
 
 export type CreateStoreMutationVariables = {
@@ -300,6 +240,9 @@ export type CreateStoreMutation = {
     shop_url?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -333,6 +276,9 @@ export type UpdateStoreMutation = {
     shop_url?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -366,6 +312,9 @@ export type DeleteStoreMutation = {
     shop_url?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -398,6 +347,9 @@ export type GetStoreQuery = {
     shop_url?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -434,13 +386,56 @@ export type ListStoresQuery = {
       shop_url?: string | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
-export type OnCreateStoreSubscriptionVariables = {
-  filter?: ModelSubscriptionStoreFilterInput | null,
+export type SyncStoresQueryVariables = {
+  filter?: ModelStoreFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncStoresQuery = {
+  syncStores?:  {
+    __typename: "ModelStoreConnection",
+    items:  Array< {
+      __typename: "Store",
+      id: string,
+      store_name: string,
+      phone?: string | null,
+      region_id?: number | null,
+      longitude?: string | null,
+      latitude?: string | null,
+      status?: number | null,
+      start_time?: string | null,
+      end_time?: string | null,
+      sort?: number | null,
+      keywords?: string | null,
+      logo?: string | null,
+      like?: number | null,
+      clicks?: number | null,
+      reviews?: number | null,
+      store_desc?: string | null,
+      created_at?: number | null,
+      updated_at?: number | null,
+      is_buy?: number | null,
+      shop_url?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
 };
 
 export type OnCreateStoreSubscription = {
@@ -468,11 +463,10 @@ export type OnCreateStoreSubscription = {
     shop_url?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
-};
-
-export type OnUpdateStoreSubscriptionVariables = {
-  filter?: ModelSubscriptionStoreFilterInput | null,
 };
 
 export type OnUpdateStoreSubscription = {
@@ -500,11 +494,10 @@ export type OnUpdateStoreSubscription = {
     shop_url?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
-};
-
-export type OnDeleteStoreSubscriptionVariables = {
-  filter?: ModelSubscriptionStoreFilterInput | null,
 };
 
 export type OnDeleteStoreSubscription = {
@@ -532,5 +525,8 @@ export type OnDeleteStoreSubscription = {
     shop_url?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
