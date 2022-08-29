@@ -43,9 +43,6 @@ export default defineNuxtConfig({
       mobileAppIOS: true,
       lang: 'ja',
     },
-    icon: {
-      source: '/src/public/icon.png',
-    },
     manifest: {
       lang: 'ja',
       name: 'Amplify with Nuxt SSR & PWA',
