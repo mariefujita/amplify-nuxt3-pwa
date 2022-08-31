@@ -1,11 +1,10 @@
 <script setup lang="ts">
+  import { API, graphqlOperation } from 'aws-amplify'
   import { ListStoresQuery } from '@/API'
-  import { withSSRContext } from 'aws-amplify'
   import { listStores } from '../graphql/queries'
 
   const { data: stores } = await useAsyncData('stores', async () => {
-    const SSR = withSSRContext()
-    const response = (await SSR.API.graphql({ query: listStores })) as {
+    const response = (await API.graphql(graphqlOperation(listStores))) as {
       data: ListStoresQuery
       errors: any[]
     }

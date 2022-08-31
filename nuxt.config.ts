@@ -2,6 +2,7 @@ import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  ssr: false,
   srcDir: 'src/',
   server: {
     port: 3000,
@@ -45,14 +46,14 @@ export default defineNuxtConfig({
     },
     manifest: {
       lang: 'ja',
-      name: 'Amplify with Nuxt SSR & PWA',
-      short_name: 'Amplify/SSR',
+      name: 'Amplify with Nuxt SSG & PWA',
+      short_name: 'Amplify/SSG',
       display: 'standalone',
       background_color: '#111827',
       theme_color: '#3B82F6',
     },
     workbox: {
-      enabled: true,
+      enabled: false,
     },
   },
 })
