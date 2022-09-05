@@ -7,18 +7,12 @@ export default defineNuxtConfig({
   server: {
     port: 3000,
   },
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    '@kevinmarrec/nuxt-pwa',
-  ],
-  tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
-    configPath: 'tailwind.config.js',
-    exposeConfig: false,
-    config: {},
-    injectPosition: 0,
-    viewer: true,
+  modules: ['@nuxtjs/color-mode', '@kevinmarrec/nuxt-pwa'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
   colorMode: {
     classSuffix: '',
@@ -31,7 +25,7 @@ export default defineNuxtConfig({
     define: {
       'process.env.DEBUG': false,
       // https://github.com/nuxt/framework/issues/4916
-      // 'window.global': {}, // ← yarn dev するときはコメントアウトを外す
+      'window.global': {}, // ← yarn dev するときはコメントアウトを外す
     },
     resolve: {
       alias: {

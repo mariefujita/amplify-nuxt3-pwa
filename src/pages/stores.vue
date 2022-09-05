@@ -8,6 +8,7 @@
       data: ListStoresQuery
       errors: any[]
     }
+    console.log(response)
     return response.data.listStores?.items
   })
 </script>
