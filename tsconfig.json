@@ -20,6 +20,5 @@
     "types": ["node"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules"],
-  "outFile": "src/aws-exports.js"
+  "exclude": ["node_modules"]
 }

@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     define: {
       'process.env.DEBUG': false,
       // https://github.com/nuxt/framework/issues/4916
-      'window.global': {}, // ← yarn dev するときはコメントアウトを外す
+      // 'window.global': {}, // ← yarn dev するときはコメントアウトを外す
     },
     resolve: {
       alias: {
